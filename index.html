@@ -3,87 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rehan | Senior Web Architect</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Rehan | Professional Web Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #02000f;
+            --bg: #030014;
             --primary: #bc13fe; 
-            --accent: #4801ff;
+            --secondary: #4801ff;
             --glass: rgba(255, 255, 255, 0.02);
-            --border: rgba(255, 255, 255, 0.08);
-            --text-main: #ffffff;
-            --text-sec: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+            --border-purple: rgba(188, 19, 254, 0.3);
+            --text-dim: #a1a1aa;
         }
 
-        /* Sleek Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        body { background-color: var(--bg); color: var(--text-main); overflow-x: hidden; line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg); color: white; overflow-x: hidden; line-height: 1.8; }
 
         .glow-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 0% 0%, #1e1b4b 0%, transparent 40%),
-                        radial-gradient(circle at 100% 100%, #1e1b4b 0%, transparent 40%);
+            background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #030014 100%);
             z-index: -2;
         }
 
         nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 8%; position: fixed; width: 100%; top: 0; z-index: 1000;
-            backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+            padding: 20px 8%; position: sticky; top: 0; z-index: 1000;
+            backdrop-filter: blur(15px); border-bottom: 1px solid var(--border);
         }
 
-        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
-        .logo span { color: var(--primary); }
+        .section-padding { padding: 100px 8%; }
+        .title { font-size: 2.8rem; margin-bottom: 50px; text-align: center; background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
 
-        .section-padding { padding: 120px 8%; }
-
-        /* --- HERO SECTION --- */
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 40px; }
-        .hero-text { flex: 1; min-width: 350px; }
-        .hero-text span { color: var(--primary); font-weight: 600; letter-spacing: 4px; font-size: 0.9rem; }
-        .hero-text h1 { font-size: clamp(3.5rem, 8vw, 6rem); font-weight: 800; line-height: 0.9; margin: 20px 0; letter-spacing: -2px; }
+        /* --- HERO --- */
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: space-between; padding: 100px 8% 50px 8%; flex-wrap: wrap; }
+        .hero-text { flex: 1; min-width: 300px; }
+        .hero-text h1 { font-size: clamp(3.5rem, 10vw, 6rem); line-height: 1; margin: 15px 0; background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; letter-spacing: -2px; }
         
-        .profile-box { position: relative; width: 400px; height: 400px; display: flex; justify-content: center; align-items: center; }
-        .circle-glow { position: absolute; width: 110%; height: 110%; border-radius: 50%; background: var(--primary); filter: blur(80px); opacity: 0.15; }
-        .profile-img { width: 320px; height: 320px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); position: relative; z-index: 5; }
+        #greeting { color: var(--primary); font-weight: 600; letter-spacing: 3px; text-transform: uppercase; font-size: 0.95rem; display: block; margin-bottom: 8px; }
+        #success-quote { color: var(--text-dim); font-size: 0.85rem; font-style: italic; border-left: 2px solid var(--primary); padding-left: 10px; min-height: 20px; margin-bottom: 20px; }
 
-        /* --- SERVICES CARDS --- */
-        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 50px; }
-        .card { 
-            background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 24px; 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        .profile-container { position: relative; width: 320px; height: 320px; display: flex; align-items: center; justify-content: center; margin: 50px auto; }
+        .outer-glow-ring { position: absolute; width: 105%; height: 105%; border-radius: 50%; border: 2px solid var(--primary); box-shadow: 0 0 40px rgba(188, 19, 254, 0.4); animation: pulseCircle 4s infinite ease-in-out; }
+        .profile-image-wrapper { width: 280px; height: 280px; border-radius: 50%; overflow: hidden; border: 4px solid #1a1a1a; z-index: 2; background: #000; }
+        .profile-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- ABOUT ME --- */
+        .about-container {
+            max-width: 1000px; margin: 0 auto;
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(188, 19, 254, 0.02) 100%);
+            border: 1px solid var(--border-purple);
+            padding: 60px; border-radius: 40px;
         }
-        .card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-        .card h3 { margin-bottom: 15px; font-size: 1.4rem; }
-        .card p { color: var(--text-sec); font-size: 0.95rem; }
+        .highlight { color: #fff; font-weight: 600; border-bottom: 1px solid var(--primary); }
 
-        /* --- SKILLS BAR --- */
-        .skill-item { margin-bottom: 25px; }
-        .skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
-        .bar-bg { width: 100%; height: 8px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; }
-        .bar-fill { height: 100%; background: linear-gradient(to right, var(--accent), var(--primary)); box-shadow: 0 0 15px var(--primary); border-radius: 10px; }
+        /* --- EXPERTISE --- */
+        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 20px; }
+        .expertise-card { background: var(--glass); border: 1px solid var(--border-purple); padding: 35px; border-radius: 24px; transition: 0.4s; }
+        .expertise-card:hover { transform: translateY(-12px); background: rgba(188, 19, 254, 0.08); border-color: var(--primary); }
 
-        /* --- BUTTONS --- */
-        .btn-primary { 
-            background: var(--primary); color: white; padding: 18px 40px; border-radius: 16px; 
-            text-decoration: none; font-weight: bold; transition: 0.3s; display: inline-block;
-        }
-        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(188, 19, 254, 0.5); }
+        /* --- SKILLS (ANIMATION FOCUSED) --- */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .skill-card { background: var(--glass); padding: 30px; border-radius: 20px; border: 1px solid var(--border-purple); transition: 0.3s; }
+        .skill-card:hover { border-color: var(--primary); }
+        .skill-info { display: flex; justify-content: space-between; margin-bottom: 12px; font-weight: 600; }
+        .skill-info span:last-child { color: var(--primary); }
+        .progress-bar { width: 100%; height: 8px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--secondary), var(--primary)); box-shadow: 0 0 15px var(--primary); }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 900px) {
-            .hero { text-align: center; justify-content: center; padding-top: 150px; }
-            .hero-text { order: 2; }
-            .profile-box { width: 280px; height: 280px; order: 1; }
-            .profile-img { width: 250px; height: 250px; }
-            nav div:last-child { display: none; }
-            .section-padding { padding: 80px 5%; }
-        }
+        .primary-btn { background: var(--primary); color: white; border: none; padding: 15px 35px; border-radius: 50px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; transition: 0.3s; text-align: center; }
+
+        @keyframes pulseCircle { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.05); opacity: 1; } }
     </style>
 </head>
 <body>
@@ -91,93 +80,107 @@
     <div class="glow-bg"></div>
 
     <nav>
-        <div class="logo">REHAN<span>.</span></div>
-        <div style="display: flex; gap: 30px;">
-            <a href="#about" style="color:white; text-decoration:none; font-size:0.85rem; font-weight:600;">ABOUT</a>
-            <a href="#services" style="color:white; text-decoration:none; font-size:0.85rem; font-weight:600;">SERVICES</a>
-            <a href="#contact" style="color:white; text-decoration:none; font-size:0.85rem; font-weight:600;">CONTACT</a>
+        <div style="font-weight: 800; font-size: 1.4rem; color: var(--primary);">REHAN.</div>
+        <div style="display: flex; gap: 20px; font-size: 0.8rem; font-weight: 600;">
+            <a href="#home" style="color:white; text-decoration:none;">HOME</a>
+            <a href="#about" style="color:white; text-decoration:none;">ABOUT</a>
+            <a href="#solutions" style="color:white; text-decoration:none;">SOLUTIONS</a>
         </div>
     </nav>
 
     <section id="home" class="hero">
         <div class="hero-text">
-            <span id="greeting">LOADING...</span>
-            <h1>CRAFTING<br>CODE & LOGIC</h1>
-            <p style="color: var(--text-sec); font-size: 1.2rem; margin: 30px 0; max-width: 550px;">
-                Specialized in building high-end interactive websites, secure API infrastructures, and advanced web architecture analysis.
+            <span id="greeting">WELCOME</span>
+            <p id="success-quote">Synchronizing creative energy...</p>
+            <h1>REHAN</h1>
+            <p style="color: var(--text-dim); max-width: 500px; margin-bottom: 30px; font-size: 1.1rem;">
+                Crafting cinematic web experiences through motion and logic.
             </p>
-            <div style="display:flex; gap:20px; flex-wrap:wrap;">
-                <a href="https://wa.me/923116071073" class="btn-primary">Hire Professionally</a>
+            <div style="display:flex; gap:15px;">
+                <a href="#contact" class="primary-btn">Hire Me</a>
+                <a href="https://wa.me/923116071073" target="_blank" style="background:transparent; color:white; border:1px solid var(--border); padding:15px 35px; border-radius:50px; text-decoration:none;">WhatsApp</a>
             </div>
         </div>
-        <div class="profile-box">
-            <div class="circle-glow"></div>
-            <img src="https://i.postimg.cc/yYP7B0bf/Screenshot-20260225-155530.png" alt="Rehan" class="profile-img">
-        </div>
-    </section>
-
-    <section id="services" class="section-padding" style="background: rgba(255,255,255,0.01);">
-        <h2 style="text-align:center; font-size:2.5rem; margin-bottom:60px;">Expertise <span>&</span> Solutions</h2>
-        <div class="grid-layout">
-            <div class="card">
-                <h3>Frontend Engineering</h3>
-                <p>Building highly responsive UIs with modern animations and seamless user journeys.</p>
-            </div>
-            <div class="card">
-                <h3>Architecture Analysis</h3>
-                <p>Decoding and analyzing web structures to optimize performance and security.</p>
-            </div>
-            <div class="card">
-                <h3>API Infrastructure</h3>
-                <p>Crafting robust backends and connecting front-end layers with precise data sync.</p>
+        <div class="profile-container">
+            <div class="outer-glow-ring"></div>
+            <div class="profile-image-wrapper">
+                <img src="https://i.postimg.cc/yYP7B0bf/Screenshot-20260225-155530.png" alt="Rehan">
             </div>
         </div>
     </section>
 
     <section id="about" class="section-padding">
-        <div class="hero" style="min-height:auto; gap:80px;">
-            <div style="flex:1">
-                <h2 style="font-size:2.5rem; margin-bottom:30px;">Technical Arsenal</h2>
-                <div class="skill-item">
-                    <div class="skill-info"><span>Web Development</span><span>95%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-info"><span>UI/UX Animation</span><span>92%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" style="width: 92%;"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-info"><span>API Security</span><span>88%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" style="width: 88%;"></div></div>
-                </div>
-            </div>
-            <div style="flex:1; background:var(--glass); padding:50px; border-radius:30px; border:1px solid var(--border);">
-                <h3 style="margin-bottom:20px; color:var(--primary)">Mission Statement</h3>
-                <p style="color:var(--text-sec)">My goal is to provide enterprise-grade web solutions that are not just functional, but visually stunning and technically bulletproof.</p>
+        <h2 class="title">Professional Philosophy</h2>
+        <div class="about-container">
+            <div style="color: var(--text-dim); font-size: 1.15rem; text-align: justify;">
+                <p>
+                    I operate at the intersection of <span class="highlight">innovative engineering</span> and strategic digital design. My journey is defined by a relentless pursuit of excellence in <span class="highlight">Full-Stack Architecture</span>, where I transform abstract concepts into high-performance, scalable ecosystems. I don't just build websites; I engineer experiences that bridge the gap between human intuition and machine precision.
+                </p>
+                <p>
+                    My technical methodology focuses on the "Science of the Web"—deeply analyzing <span class="highlight">source infrastructures</span> to optimize performance at a granular level. From reverse-engineering complex systems to implementing <span class="highlight">hardened security protocols</span>, my objective is to ensure every digital asset I touch is both impenetrable and lightning-fast. 
+                </p>
+                <p>
+                    I believe that the future of the web lies in <span class="highlight">seamless interconnectivity</span>. This drives my focus on API synchronization and modern UI trends like Glassmorphism. Whether it's crafting fluid animations or architecting robust backends, my philosophy remains constant: <span class="highlight">Code is an art form</span>, and every pixel is a deliberate choice toward perfection.
+                </p>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section-padding" style="text-align: center;">
-        <div style="max-width:800px; margin:0 auto;">
-            <h2 style="font-size:3rem; margin-bottom:20px;">Ready to start?</h2>
-            <p style="color:var(--text-sec); margin-bottom:40px;">Currently accepting high-impact projects and technical consultations.</p>
-            <a href="https://wa.me/923116071073" class="btn-primary" style="background:#25D366">Start WhatsApp Chat</a>
-            <div style="margin-top:30px;">
-                <p style="font-size:0.9rem; color:var(--text-sec)">Direct Line: +92 311 6071073</p>
-                <button onclick="navigator.clipboard.writeText('+923116071073'); alert('Copied!')" style="background:transparent; border:none; color:var(--primary); cursor:pointer; font-weight:bold; margin-top:10px;">COPY NUMBER</button>
+    <section id="solutions" class="section-padding">
+        <h2 class="title">Expertise & Solutions</h2>
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <h3>Motion Design</h3>
+                <p>Developing smooth, scroll-triggered animations that bring interfaces to life.</p>
+            </div>
+            <div class="expertise-card">
+                <h3>Visual Storytelling</h3>
+                <p>Using web technology to guide users through a narrative-driven digital journey.</p>
+            </div>
+            <div class="expertise-card">
+                <h3>Fluid UI/UX</h3>
+                <p>Designing seamless transitions that feel natural and highly responsive.</p>
             </div>
         </div>
     </section>
 
-    <footer style="padding: 60px 8%; border-top: 1px solid var(--border); text-align: center; color: var(--text-sec); font-size: 0.8rem;">
-        &copy; 2026 REHAN | ENGINEERED WITH PRECISION
+    <section class="section-padding">
+        <h2 class="title">Animation Arsenal</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-info"><span>GSAP & Framer Motion</span><span>96%</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 96%;"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-info"><span>3D WebGL (Three.js)</span><span>85%</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-info"><span>Micro-Interactions</span><span>92%</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 92%;"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 30px; text-align: center; font-size: 0.7rem; color: var(--text-dim); border-top: 1px solid var(--border);">
+        &copy; 2026 REHAN. All Rights Reserved.
     </footer>
 
     <script>
-        const hr = new Date().getHours();
-        const greet = hr < 12 ? "GOOD MORNING" : hr < 18 ? "GOOD AFTERNOON" : "GOOD EVENING";
-        document.getElementById('greeting').innerText = greet;
+        function updateAll() {
+            const hr = new Date().getHours();
+            document.getElementById('greeting').innerHTML = (hr < 12) ? "GOOD MORNING" : (hr < 18) ? "GOOD AFTERNOON" : "GOOD EVENING";
+            const quotes = [
+                "Good design is obvious. Great design is transparent.",
+                "Animation can explain whatever the mind of man can conceive.",
+                "Simplicity is the ultimate sophistication.",
+                "Design is not just what it looks like, it's how it works.",
+                "Quality is not an act, it is a habit."
+            ];
+            document.getElementById('success-quote').innerText = quotes[hr % quotes.length];
+        }
+        window.onload = updateAll;
+        setInterval(updateAll, 60000);
     </script>
 </body>
 </html>
